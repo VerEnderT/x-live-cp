@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.0.1
+Type=Application
+Name=X-Live-ControlPanel
+Exec=x-live-cp
+Icon=x-live-cp
+Categories=Utility;
+Keywords=tray;x-live;overview;control;panel;
+StartupNotify=true
+X-GNOME-UsesNotifications=true
+GenericName=x-live Controlpanel
