@@ -22,9 +22,9 @@ class Tray(QWidget):
         self.bg = QLabel(self)
         self.bg.setFixedSize(screen.width(),screen.height())
         self.bg.move(0,0)
-        self.settings_cmds =  self.check_com(["command -v xfce4-settings-manager","command -v lxde-control-center","command -v gnome-control-center","command -v systemsettings"]).split("\n")
-        self.term_cmds = self.check_com(["command -v gnome-terminal","command -v konsole","command -v xfce4-terminal","command -v lxterminal"]).split("\n")
-        self.taskm_cmds = self.check_com(["command -v gnome-system-monitor","command -v ksysguard","command -v xfce4-taskmanager","command -v lxtask","command -v stacer"]).split("\n")
+        self.settings_cmds =  self.check_com(["xfce4-settings-manager","lxde-control-center","gnome-control-center","systemsettings"])
+        self.term_cmds = self.check_com(["gnome-terminal","konsole","xfce4-terminal","lxterminal"])
+        self.taskm_cmds = self.check_com(["x-live-taskmanager","gnome-system-monitor","ksysguard","xfce4-taskmanager","lxtask","stacer"])
 
         # Befehlsdefinition
         self.tmcommand = self.taskm_cmds[0]
@@ -318,12 +318,13 @@ class Tray(QWidget):
             #print(f"Befehl: {str(command)}\nFehler: {e} \n")
             return " "
     def check_com(self, cmds):
-        ergebnis = ""
+        ergebnis = []
         for cmd in cmds:
-            t=self.com(cmd)
+            t=self.com("command -v "+str(cmd))
             if t != " ":
-                ergebnis = ergebnis + t
+                ergebnis.append(cmd) 
         return ergebnis
+        
 
 
 
